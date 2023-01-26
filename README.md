@@ -1,4 +1,4 @@
-# Sui node setup for devnet
+# Sui node setup for tesnet wave 2
 
 Official documentation:
 - Official manual: https://docs.sui.io/build/fullnode
@@ -73,30 +73,7 @@ mv ~/sui/target/release/sui /usr/local/bin/
 sui-node -V && sui -V
 ```
 
-
-8. Generate wallet
-```
-echo -e "y\n\n0\n" | sui client
-```
-> !Please backup your wallet key files located in `$HOME/.sui/sui_config/` directory!
-## Top up your wallet
-9. Get your wallet address:
-```
-sui client active-address
-```
-
-10. Navigate to [Sui Discord](https://discord.gg/sui) `#devnet-faucet` channel and top up your wallet
-```
-!faucet <YOUR_WALLET_ADDRESS>
-```
-
-![image](https://user-images.githubusercontent.com/50621007/180215182-cbb7fc6c-aba3-4834-ad05-f79e1c26b40c.png)
-
-11. Wait until bot sends tokens to your wallet
-
-![image](https://user-images.githubusercontent.com/50621007/180222321-1dc5323b-1174-41c8-b632-6ac2ce639ce1.png)
-
-12. Create Service file for SUI Node.
+8. Create Service file for SUI Node.
 ```echo "[Unit]
 echo "[Unit]
 Description=Sui Node
@@ -118,6 +95,29 @@ sudo tee <<EOF >/dev/null /etc/systemd/journald.conf
 Storage=persistent
 EOF
 ```
+
+9. Generate wallet
+```
+echo -e "y\n\n0\n" | sui client
+```
+> !Please backup your wallet key files located in `$HOME/.sui/sui_config/` directory!
+## Top up your wallet
+10. Get your wallet address:
+```
+sui client active-address
+```
+
+11. Navigate to [Sui Discord](https://discord.gg/sui) `#devnet-faucet` channel and top up your wallet
+```
+!faucet <YOUR_WALLET_ADDRESS>
+```
+
+![image](https://user-images.githubusercontent.com/50621007/180215182-cbb7fc6c-aba3-4834-ad05-f79e1c26b40c.png)
+
+12. Wait until bot sends tokens to your wallet
+
+![image](https://user-images.githubusercontent.com/50621007/180222321-1dc5323b-1174-41c8-b632-6ac2ce639ce1.png)
+
 
 13. Start SUI Full Node in Service.
 ```sudo systemctl restart systemd-journald
