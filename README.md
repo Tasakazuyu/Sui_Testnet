@@ -80,6 +80,7 @@ sui client active-address
 
 12. Create Service file for SUI Node.
 ```echo "[Unit]
+echo "[Unit]
 Description=Sui Node
 After=network.target
 
