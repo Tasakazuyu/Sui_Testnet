@@ -1,3 +1,22 @@
+# Sui node setup for devnet
+
+Official documentation:
+- Official manual: https://docs.sui.io/build/fullnode
+- Experiment with Sui DevNet: https://docs.sui.io/explore/devnet
+- Check you node health: https://node.sui.zvalid.com/
+
+## Minimum hardware requirements
+- CPU: 2 CPU
+- Memory: 4 GB RAM
+- Disk: 50 GB SSD Storage
+
+## Recommended hardware requirements
+- CPU: 2 CPU
+- Memory: 8 GB RAM
+- Disk: 50 GB SSD Storage
+
+
+
 1. Install Linux dependencies.
 ```
 sudo apt-get update \
