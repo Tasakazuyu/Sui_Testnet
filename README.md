@@ -1,7 +1,4 @@
-Sui Testnet Nodes
-
 1. Install Linux dependencies.
-
 ```
 sudo apt-get update \
 && sudo apt-get install -y --no-install-recommends \
@@ -16,16 +13,16 @@ protobuf-compiler \
 cmake
 ```
 
-
 2. Install Rust.
-```sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
+```
+sudo curl https://sh.rustup.rs -sSf | sh -s -- -y
 source $HOME/.cargo/env
 rustc --version
 ```
 
-
 3. Clone GitHub SUI repository.
-```cd $HOME
+```
+cd $HOME
 git clone https://github.com/MystenLabs/sui.git
 cd sui
 git remote add upstream https://github.com/MystenLabs/sui
@@ -44,16 +41,19 @@ wget -O $HOME/.sui/genesis.blob  https://github.com/MystenLabs/sui-genesis/raw/m
 ```
 
 6. Make a copy of fullnode.yaml and update path to db and genesis file in it.
-```cp $HOME/sui/crates/sui-config/data/fullnode-template.yaml $HOME/.sui/fullnode.yaml
+```
+cp $HOME/sui/crates/sui-config/data/fullnode-template.yaml $HOME/.sui/fullnode.yaml
 sed -i.bak "s|db-path:.*|db-path: \"$HOME\/.sui\/db\"| ; s|genesis-file-location:.*|genesis-file-location: \"$HOME\/.sui\/genesis.blob\"| ; s|127.0.0.1|0.0.0.0|" $HOME/.sui/fullnode.yaml
 ```
 
 7. Build SUI binaries.
-```cargo build --release
+```
+cargo build --release
 mv ~/sui/target/release/sui-node /usr/local/bin/
 mv ~/sui/target/release/sui /usr/local/bin/
 sui-node -V && sui -V
 ```
+
 
 8. Generate wallet
 ```
