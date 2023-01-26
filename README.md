@@ -124,3 +124,5 @@ Check sui client version
 ```
 sui --version
 ```
+### Check Your Node Status
+https://www.scale3labs.com/check/sui
