@@ -77,7 +77,6 @@ sui client active-address
 
 ![image](https://user-images.githubusercontent.com/50621007/180222321-1dc5323b-1174-41c8-b632-6ac2ce639ce1.png)
 
-
 12. Create Service file for SUI Node.
 ```echo "[Unit]
 echo "[Unit]
@@ -110,6 +109,59 @@ journalctl -u suid -f
 ```
 
 
+### Get the five most recent transactions
+```
+curl --location --request POST 'http://127.0.0.1:9000/' --header 'Content-Type: application/json' \
+--data-raw '{ "jsonrpc":"2.0", "id":1, "method":"sui_getRecentTransactions", "params":[5] }' | jq .
+```
+
+### Get details about a specific transaction
+```
+curl --location --request POST 'http://127.0.0.1:9000/' --header 'Content-Type: application/json' \
+--data-raw '{ "jsonrpc":"2.0", "id":1, "method":"sui_getTransaction", "params":["<RECENT_TXN_FROM_ABOVE>"] }' | jq .
+```
+
+## Operations with objects
+Now lets do some operations with objects
+
+### Merge two objects into one
+```
+JSON=$(sui client gas --json | jq -r)
+FIRST_OBJECT_ID=$(echo $JSON | jq -r .[0].id.id)
+SECOND_OBJECT_ID=$(echo $JSON | jq -r .[1].id.id)
+sui client merge-coin --primary-coin ${FIRST_OBJECT_ID} --coin-to-merge ${SECOND_OBJECT_ID} --gas-budget 1000
+```
+
+You should see output like this:
+```
+----- Certificate ----
+Transaction Hash: t3BscscUH2tMnMRfzYyc4Nr9HZ65nXuaL87BicUwXVo=
+Transaction Signature: OCIYOWRPLSwpLG0bAmDTMixvE3IcyJgcRM5TEXJAOWvDv1xDmPxm99qQEJJQb0iwCgEfDBl74Q3XI6yD+AK7BQ==@U6zbX7hNmQ0SeZMheEKgPQVGVmdE5ikRQZIeDKFXwt8=
+Signed Authorities Bitmap: RoaringBitmap<[0, 2, 3]>
+Transaction Kind : Call
+Package ID : 0x2
+Module : coin
+Function : join
+Arguments : ["0x530720be83c5e8dffde5f602d2f36e467a24f6de", "0xb66106ac8bc9bf8ec58a5949da934febc6d7837c"]
+Type Arguments : ["0x2::sui::SUI"]
+----- Merge Coin Results ----
+Updated Coin : Coin { id: 0x530720be83c5e8dffde5f602d2f36e467a24f6de, value: 100000 }
+Updated Gas : Coin { id: 0xc0a3fa96f8e52395fa659756a6821c209428b3d9, value: 49560 }
+```
+
+Lets yet again check list of objects
+```
+sui client gas
+```
+
+We can see that two first objects are now merged into one and gas has been payed by third object
+
+![image](https://user-images.githubusercontent.com/50621007/180228094-10b563f4-ea6f-42cd-b560-6abeda47c2df.png)
+
+>This is only one example of transactions that can be made at the moment. Other examples can be found at the [official website](https://docs.sui.io/build/wallet)
+
+
+
 ## Usefull commands for sui fullnode
 Check sui node status
 ```
@@ -125,5 +177,13 @@ Check sui client version
 ```
 sui --version
 ```
-### Check Your Node Status
+
+### Check Your Node Status Via CLI
+```
+curl -s -X POST http://127.0.0.1:9000 -H 'Content-Type: application/json' -d '{ "jsonrpc":"2.0", "method":"rpc.discover","id":1}' | jq .result.info
+```
+
+### Check Your Node Status via Website
 https://www.scale3labs.com/check/sui
+
+
