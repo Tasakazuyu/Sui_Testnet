@@ -183,6 +183,24 @@ sui --version
 curl -s -X POST http://127.0.0.1:9000 -H 'Content-Type: application/json' -d '{ "jsonrpc":"2.0", "method":"rpc.discover","id":1}' | jq .result.info
 ```
 
+You should see something similar in the output:
+```json
+{
+  "title": "Sui JSON-RPC",
+  "description": "Sui JSON-RPC API for interaction with the Sui network gateway.",
+  "contact": {
+    "name": "Mysten Labs",
+    "url": "https://mystenlabs.com",
+    "email": "build@mystenlabs.com"
+  },
+  "license": {
+    "name": "Apache-2.0",
+    "url": "https://raw.githubusercontent.com/MystenLabs/sui/main/LICENSE"
+  },
+  "version": "0.1.0"
+}
+```
+
 ### Check Your Node Status via Website
 https://www.scale3labs.com/check/sui
 
