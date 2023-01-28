@@ -153,13 +153,13 @@ await provider.requestSuiFromFaucet(
 ```
 
 13. Start SUI Full Node in Service.
-```sudo systemctl restart systemd-journald
+```
+sudo systemctl restart systemd-journald
 sudo systemctl daemon-reload
 sudo systemctl enable suid
 sudo systemctl restart suid
 journalctl -u suid -f
 ```
-
 
 ### Get the five most recent transactions
 ```
