@@ -118,6 +118,32 @@ sui client active-address
 
 ![image](https://user-images.githubusercontent.com/50621007/180222321-1dc5323b-1174-41c8-b632-6ac2ce639ce1.png)
 
+> OR YOU CAN TRY REQUEST FAUCET WITH CLI
+
+### Request test tokens through cURL
+Use the following cURL command to request tokens directly from the faucet server:
+```
+curl --location --request POST 'https://faucet.devnet.sui.io/gas' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "FixedAmountRequest": {
+        "recipient": "<YOUR SUI ADDRESS>"
+    }
+}'
+```
+
+### Request test tokens through TypeScript SDK
+You can also access the faucet through the TS-SDK.
+
+```
+import { JsonRpcProvider, Network } from '@mysten/sui.js';
+// connect to Devnet
+const provider = new JsonRpcProvider(Network.DEVNET);
+// get tokens from the Devnet faucet server
+await provider.requestSuiFromFaucet(
+  '<YOUR SUI ADDRESS>'
+);
+```
 
 13. Start SUI Full Node in Service.
 ```sudo systemctl restart systemd-journald
