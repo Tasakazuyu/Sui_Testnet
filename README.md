@@ -1,4 +1,4 @@
-# Sui node setup for tesnet wave 2
+# Sui node setup for tesnet wave 2 via Service method
 
 Official documentation:
 - Official manual: https://docs.sui.io/build/fullnode
