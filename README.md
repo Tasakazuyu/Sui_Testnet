@@ -72,7 +72,7 @@ cargo build --release --bin sui-node
 mv ~/sui/target/release/sui-node /usr/local/bin/
 sui-node -V
 ```
-### YANG INI SALAH JGN DI COPY
+### YANG INI SALAH JGN DI COPY, YANG BENER YG DIATAS 3 BARIS CODE
 ```
 cargo build --release
 mv ~/sui/target/release/sui-node /usr/local/bin/
