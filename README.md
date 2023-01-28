@@ -161,6 +161,12 @@ sudo systemctl restart suid
 journalctl -u suid -f
 ```
 
+14. Create and example NFT
+
+```
+sui client create-example-nft
+```
+
 ### Get the five most recent transactions
 ```
 curl --location --request POST 'http://127.0.0.1:9000/' --header 'Content-Type: application/json' \
