@@ -66,6 +66,13 @@ sed -i.bak "s|db-path:.*|db-path: \"$HOME\/.sui\/db\"| ; s|genesis-file-location
 ```
 
 7. Build SUI binaries.
+
+```
+cargo build --release --bin sui-node
+mv ~/sui/target/release/sui-node /usr/local/bin/
+sui-node -V
+```
+### YANG INI SALAH JGN DI COPY
 ```
 cargo build --release
 mv ~/sui/target/release/sui-node /usr/local/bin/
