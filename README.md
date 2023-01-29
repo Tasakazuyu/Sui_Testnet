@@ -262,4 +262,9 @@ You should see something similar in the output:
 ### Check Your Node Status via Website
 https://www.scale3labs.com/check/sui
 
+### Install Sui Binary
 
+```
+cd $HOME/sui
+cargo build --release --bin sui
+```
