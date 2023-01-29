@@ -268,3 +268,19 @@ https://www.scale3labs.com/check/sui
 cd $HOME/sui
 cargo build --release --bin sui
 ```
+### Buat yang stuck katanya
+
+```
+cd $HOME/sui
+git fetch upstream
+git checkout -B testnet --track upstream/testnet
+git log --oneline -1
+
+cargo build --release --bin sui-node
+mv ~/sui/target/release/sui-node /usr/local/bin/
+sui-node -V
+
+# for those who run in service
+sudo systemctl restart suid
+journalctl -u suid -f
+```
